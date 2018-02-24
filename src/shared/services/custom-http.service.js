@@ -1,26 +1,32 @@
 import axios from 'axios';
 import * as Storage from './json-storage.service';
 
-export class CustomHttp {
+const baseUrl = 'https://reqres.in';
 
-    instance;
-    constructor() {
-        this.instance = axios.create({
-            baseURL: 'https://reqres.in/',
-            timeout: 1000,
-            headers: {'Authorization': 'Bearer ' + this.getAuthToken()}
-          });
-    }
+export const get = async (url, params) => {
+    const token = await Storage.getItem('token');
 
-    async getAuthToken() {
-        return await Storage.getItem('auth-token');
-    }
+    return axios.request({
+                url: baseUrl + url,
+                method: 'get',
+                baseUrl,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+}
 
-    get(url, params) {
-        return axios.get(url, this.instance);
-    }
+export const post = async (url, params) => {
+    const token = await Storage.getItem('token');
 
-    post(url, params) {
-        return axios.post(url, params, this.instance);
-    }
+    return axios.request({
+                url: baseUrl + url,
+                method: 'post',
+                baseUrl,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                params
+            });
+
 }

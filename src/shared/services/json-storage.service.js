@@ -1,14 +1,9 @@
 import { AsyncStorage } from 'react-native';
 
 export const getItem = async (key, callback ? ) => {
-    let value = await AsyncStorage.getItem(callback);
-    return JSON.parse(value);
+    return await AsyncStorage.getItem(key, callback);
 }
 
-export const setItem = async (key, json) => {
-    let value = JSON.stringify(json);
-
-    console.log("from storage", json)
-
+export const setItem = async (key, value) => {
     await AsyncStorage.setItem(key, value);
 }
