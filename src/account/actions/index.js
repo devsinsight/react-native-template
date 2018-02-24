@@ -1,6 +1,6 @@
 import * as actions from './types';
 import { Actions } from 'react-native-router-flux';
-import axios from 'axios';
+import * as loginService from '../account.service';
 
 export const emailChanged = (text) => {
     return {
@@ -17,12 +17,11 @@ export const passwordChanged = (text) => {
 };
 
 export const login = ({ email, password }) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch({ type: actions.LOADING });
-
-        axios.get('http://google.com')
-            .then( response => loginSuccess(dispatch, response))
-            .catch( response => loginFail(dispatch));
+        await loginService.login({ email, password })
+            .then(response => loginSuccess(dispatch, response))
+            .catch(response => loginFail(dispatch));
     };
 };
 
@@ -32,7 +31,7 @@ const loginSuccess = (dispatch, response) => {
         payload: { user: 'jose', uid: '123456789'}
     });
 
-    Actions.employeeList();
+    Actions.main();
 };
 
 const loginFail = (dispatch) => {

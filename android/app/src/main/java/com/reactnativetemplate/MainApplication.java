@@ -1,4 +1,4 @@
-package com.reacttemplate;
+package com.reactnativetemplate;
 
 import android.app.Application;
 

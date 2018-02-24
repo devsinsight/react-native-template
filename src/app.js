@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Header } from './shared/components';
-import reducers from './reducers';
+import reducers from './reducer';
 import Login from './account/login';
 import Router from './router';
 

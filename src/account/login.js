@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from './actions';
 import { Card, CardSection, Input, Button, Spinner } from '../shared/components';
 
 class Login extends Component {
@@ -21,7 +21,6 @@ class Login extends Component {
     }
 
     renderError() {
-        console.log(this.props.error)
         if(this.props.error)
             return (
                 <View style={styles.errorViewStyle}> 
