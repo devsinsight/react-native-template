@@ -3,7 +3,8 @@ import * as actions from './actions/types';
 const INITIAL_STATE = {
     name: '',
     phone: '',
-    shift: ''
+    shift: '',
+    employees: []
 };
 
 export default (state = INITIAL_STATE, action) => {

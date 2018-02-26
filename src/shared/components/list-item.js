@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { CardSection } from '.';
+import { CardSection } from '../components';
 
 class ListItem extends Component {
     render() {
         const { id, name, year, color, pantone_value } = this.props.employee;
         return (
             <CardSection>
-                <Text>{id}</Text>
-                <Text>{name}</Text>
-                <Text>{year}</Text>
-                <Text>{color}</Text>
-                <Text>{pantone_value}</Text>
+                <Text style={styles.titleStyle}>{name}</Text>
             </CardSection>
         );
     };
 }
 
-export default ListItem;
+const styles = {
+    titleStyle: {
+        fontSize: 18,
+        paddingLeft: 15
+    }
+};
+
+export { ListItem };

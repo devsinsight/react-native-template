@@ -21,7 +21,7 @@ export const employeeCreate = (employee) => {
 
 export const employeesFetch = () => {
     return (dispatch) => {
-        EmployeeService.employeeFetch()
+        EmployeeService.employeesFetch()
             .then(response => {
                 dispatch({ type: actions.EMPLOYEES_FETCH, payload: response.data.data });
             });

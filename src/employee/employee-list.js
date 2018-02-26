@@ -8,8 +8,6 @@ import { ListItem } from '../shared/components';
 
 class EmployeeList extends Component {
 
-    dataSource;
-
     componentWillMount() {
         this.props.employeesFetch();
         this.createDataSource(this.props);
@@ -31,29 +29,20 @@ class EmployeeList extends Component {
         return <ListItem employee={employee} />
     }
 
-    renderEmployees() {
-        return this.employees.map( employee => 
+    render() {
+        return (
             <ListView
                 enableEmptySections
                 dataSource={this.dataSource}
                 renderRow={this.renderRow}
             />
 
-            
-        );
-    }
-
-    render() {
-        return (
-            <Card>
-                
-            </Card>
         );
     };
 }
 
 const mapStateToProps = (state) => {
-    const employees = _.map(state.employees, (val, uid) => {
+    const employees = _.map(state.employee.employees, (val, uid) => {
         return { ...val, uid};
     });
     return { employees };
