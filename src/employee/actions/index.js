@@ -12,10 +12,13 @@ export const employeeSyncForm = ({ prop, value }) => {
 
 export const employeeCreate = (employee) => {
     return (dispatch) => {
-        //TODO: insede call
-        dispatch({ type: actions.EMPLOYEE_CREATE })
-        Actions.main();
-        Actions.employeeList();
+        EmployeeService.employeeCreate(employee)
+            .then( response => {
+                console.log("response: ", response)
+                dispatch({ type: actions.EMPLOYEE_CREATE })
+                Actions.employeeList();
+            });
+
     };
 };
 
